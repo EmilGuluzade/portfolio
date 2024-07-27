@@ -19,18 +19,14 @@ const Contact = () => {
     const sendEmail = (e) => {
     e.preventDefault();
     
-    if(!formData.from_name || !formData.reply_to ||!formData.message){
+    if(!formData.user_name || !formData.user_email ||!formData.user_message ){
       setNotDone(true)
     } else {
       
-      //  Please use your own credentials from emailjs or i will recive your email
       
     emailjs
       .sendForm(
-        "service_niilndo",
-        "template_6z5idye",
-        form.current,
-        "VOBt6Akm1LhI5CZG-"
+       'service_kihpqq4', 'template_g0m1t05', form.current, 'YwBxsj-wvbTZC-e_v'
       )
       .then(
         (result) => {
@@ -54,12 +50,13 @@ const Contact = () => {
             </Col>
             <Col md={6} className="c-right">
                 <form ref={form} onSubmit={sendEmail}>
-                <input type="text" name="from_name" className="user"  placeholder="Name" onChange={handleChange}/>
-                <input type="email" name="reply_to" className="user" placeholder="Email" onChange={handleChange} />
-                <textarea name="message" className="user" placeholder="Message" onChange={handleChange} />
+                <input type="text" name="user_name" className="user"  placeholder="Name" onChange={handleChange}/>
+                <input type="email" name="user_email" className="user" placeholder="Email" onChange={handleChange} />
+                <input type="tel" name="user_phone" className="user" placeholder="Phone" onChange={handleChange} />
+                <textarea name="user_message" className="user" placeholder="Message" onChange={handleChange} />
                 <span className='not-done' >{notDone && "Please, fill all the input field"}</span>
                 <Button type="submit" className="button" disabled={done}>Send</Button>
-                <span className='done'>{done && "Thanks for contacting me and be sure i have recieved your mail. If you are testing this functionality then i am confirming this thing working perfectly fine. If you have any serious query then i will reply. Also if you need me, you can conatct me on Linkedin."}</span>
+                <span className='done'>{done && "Thanks for contacting me and be sure i have recieved your mail. If you have any serious query then i will reply. Also if you need me, you can conatct me on Linkedin."}</span>
                 </form>
             </Col>
             </Row>
